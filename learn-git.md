@@ -62,4 +62,15 @@ git diff 查看修改内容
   	git restore --staged <file>
   	git reset -- 
 ```
+## 关联一个远程库
+***ssh***
+```git remote add origin git@github.com:moreUare/learngit.git``` 
+***http***
+```git remote add origin https://github.com/moreUare/learngit.git``` 
+关联后，使用命令git push -u origin master
+
+## 克隆远程库
+```git clone git@github.com:moreUare/learngit.git```
+```git clone https://github.com/moreUare/learngit.git```
+	
   		
