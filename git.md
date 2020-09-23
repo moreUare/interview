@@ -16,7 +16,8 @@ git diff 查看修改内容
 1. git log 查看提交历史
 2. git reset
 	git reset --hard commit_id
-	git reset --hard HEAD^ 
+	git reset --hard HEAD^  
+	```
 	┌────┐
 	│HEAD│
 	└────┘
@@ -26,7 +27,7 @@ git diff 查看修改内容
 	        ○ add distributed
 	        │
 	        ○ wrote a readme file
-	改为指向add distributed：
+	//改为指向add distributed：
 	┌────┐
 	│HEAD│
 	└────┘
@@ -35,7 +36,8 @@ git diff 查看修改内容
 	   │    │
 	   └──> ○ add distributed
 	        │
-	        ○ wrote a readme file		
+	        ○ wrote a readme file	
+	```	
 3、git reflog 查看命令历史
 ## 让这个文件回到最近一次git commit或git add时的状态
 >>>撤销工作区的修改 git checkout -- <file>
