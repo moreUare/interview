@@ -10,7 +10,7 @@
 git status
 git diff 查看修改内容
 ### 版本库
-`stage`暂存区 `master`分支 `HEAD`指针
+`stage`暂存区 `master`分支 `HEAD`指针  
 ![版本库](https://static.liaoxuefeng.com/files/attachments/919020037470528/0 "git版本库")
 ### 版本回退
 1. git log 查看提交历史
@@ -41,7 +41,7 @@ git diff 查看修改内容
 3、git reflog 查看命令历史
 ## 让这个文件回到最近一次git commit或git add时的状态
 >>>撤销工作区的修改 git checkout -- <file>
- >>>撤销暂存区的修改 git reset HEAD <file>
+>>>撤销暂存区的修改 git reset HEAD <file>
 ### Tip1
  	1.没有git add时，用git checkout -- file 将工作区的修改恢复到暂存区的内容
 
