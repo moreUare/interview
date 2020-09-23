@@ -10,8 +10,8 @@
 	git status
 	git diff 查看修改内容
 ### 版本库
-	stage暂存区 master分支 HEAD指针
-	![版本库](https://static.liaoxuefeng.com/files/attachments/919020037470528/0)
+	$\color{red}{$stage}暂存区 master分支 HEAD指针
+	![版本库](https://static.liaoxuefeng.com/files/attachments/919020037470528/0 "git版本库")
 ### 版本回退
 	1、git log 查看提交历史
 	2、git reset
