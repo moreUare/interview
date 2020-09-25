@@ -82,13 +82,13 @@ git diff 查看修改内容
 ```git clone git@github.com:moreUare/learngit.git```
 ```git clone https://github.com/moreUare/learngit.git```
 	
-## 管理分支 `switch`
-查看分支： `git branch`
-创建分支： `git branch <file>`
-切换分支： `git switch <file>`
-创建 + 切换分支： `git switch -c <file>`
-合并某分支到当前分支： `git merge <name>`
-删除分支: `git branch -d <name>`
+## 管理分支 `switch`  
+查看分支： `git branch`  
+创建分支： `git branch <file>`  
+切换分支： `git switch <file>`  
+创建 + 切换分支： `git switch -c <file>`  
+合并某分支到当前分支： `git merge <name>`  
+删除分支: `git branch -d <name>`  
 
 ***git checkout命令加上-b参数表示创建并切换***
 
@@ -108,11 +108,11 @@ git diff 查看修改内容
 4. 切换到master分支，完成合并，最后删除issue-101
 5. 切换到dev分支 
 ```
-* git stash list 查看stash存储的工作区
-* git stash apply 恢复 
-* git stash drop 删除stash
-* git stash pop 恢复的同时删除stash
-* git stash apply stash@{0} 恢复到指定的stash
+* git stash list 查看stash存储的工作区  
+* git stash apply 恢复   
+* git stash drop 删除stash  
+* git stash pop 恢复的同时删除stash  
+* git stash apply stash@{0} 恢复到指定的stash  
 ```
 6. 修复dev分支上的BUG
 * 提交后使用命令 `git cherry-pick commitID`
