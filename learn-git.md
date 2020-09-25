@@ -1,3 +1,5 @@
+
+## 远程仓库
 # Git 
 ## 创建一个版本库
 
@@ -113,10 +115,47 @@ git diff 查看修改内容
 * git stash apply stash@{0} 恢复到指定的stash
 ```
 6. 修复dev分支上的BUG
-* 提交后使用命令 git cherry-pick commitID
+* 提交后使用命令 `git cherry-pick commitID`
 
 ## 删除一个没有被合并过的分支   
 `git branch -D <name>`
+
+## 远程仓库管理
+`master 主分支` `dev开发分支`
+
+`git switch -c origin/dev`
+### 从远程获取代码并合并本地的版本 `git pull `
+`git pull <远程主机名> <远程分支名>:<本地分支名>`
+`git branch --set-upstream <branch-name> <origin/branch-name>指定本地dev分支与远程dev分支的链接`
+
+因此，多人协作的工作模式通常是这样：
+
+首先，可以试图用git push origin <branch-name>推送自己的修改；
+
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+如果合并有冲突，则解决冲突，并在本地提交；
+
+没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+
+实际开发中,master分支主要用与生产环境的发布使用(比如线上正式环境，线上测试环境),比较稳定，合并权限管控比较严格，一般都是只有leader才有合并的权限。
+
+dev分支主要用户测试环境使用，大家平时都在上面干活，大家都有合并权限，合并比较随意。
+
+>实际情况大家在开发需求的时候，会创建自己的功能分支，然后往dev分支和master分支合并，多人协作，合并分支时，冲突是可能会产生的，这是不可避免的，不过情况会比较少，除非两人同时修改了同个文件相同位置的内容。
+
+## 标签管理
+tag可以代替commitID 
+### 创建标签
+创建标签：`git tag <tagName>`
+删除标签：`git tag -d <tagName>`
+查看标签：`git tag`
+给之前的提交打tag： `git tag <tagName> <commitID> `
+查看标签信息: `git show <tagName>`
+推送标签到远程：`git push origin <tagName>`
+推送所有未推送的本地标签：`git push origin --tag`
+如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除: `git push origin :refs/tags/<tagName>`
+标签按字母排序
 
 
 
