@@ -144,18 +144,24 @@ dev分支主要用户测试环境使用，大家平时都在上面干活，大�
 
 >实际情况大家在开发需求的时候，会创建自己的功能分支，然后往dev分支和master分支合并，多人协作，合并分支时，冲突是可能会产生的，这是不可避免的，不过情况会比较少，除非两人同时修改了同个文件相同位置的内容。
 
+### git pull
+`git pull origin dev` 相当于`git fetch origin dev` //从远程主机的master分支拉取最新内容 及 `git merge //将拉取下来的最新内容合并到当前所在的分支中FETCH_HEAD`
+
+
 ## 标签管理
 tag可以代替commitID 
 ### 创建标签
-创建标签：`git tag <tagName>`
-删除标签：`git tag -d <tagName>`
-查看标签：`git tag`
-给之前的提交打tag： `git tag <tagName> <commitID> `
-查看标签信息: `git show <tagName>`
-推送标签到远程：`git push origin <tagName>`
-推送所有未推送的本地标签：`git push origin --tag`
-如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除: `git push origin :refs/tags/<tagName>`
+创建标签：`git tag <tagName>` 	
+删除标签：`git tag -d <tagName>` 	 
+查看标签：`git tag`	  	
+给之前的提交打tag： `git tag <tagName> <commitID> `	  
+查看标签信息: `git show <tagName>`	  
+推送标签到远程：`git push origin <tagName>`	  
+推送所有未推送的本地标签：`git push origin --tag`	 	 
+如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除: `git push origin :refs/tags/<tagName>`	  
 标签按字母排序
+
+***如果两人同时向远程仓库push产生冲突，可能也许网速慢的会被reject***
 
 
 
