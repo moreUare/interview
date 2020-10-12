@@ -7,3 +7,9 @@ var buildArray = (arr, length, min, max) => {
 	return length == arr.length ? arr : buildArray(arr, length, min, max)
 }
 ```
+## $.ajax()
+
+## 闭包
+
+
+
