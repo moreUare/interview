@@ -11,5 +11,11 @@ var buildArray = (arr, length, min, max) => {
 
 ## 闭包
 
+## Object方法
+```
+Object.assign(target, source, ...) （修改target的值并返回）
+target 目标对象
+source 源对象 （多个）
+```
 
 

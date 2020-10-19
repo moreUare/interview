@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .fade-enter-active, .fade-leave-active{
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click ="show = !show">Toggle</button>
+        <transition name="fade">
+            <p v-if="show">Hello</p>
+        </transition>
+        {{ message | capitalize }}
+        <!-- v-bind -->
+        <div v-bind:id = "message | capitalize"></div>
+        <input type="text" v-model="message"><br>
+        {{ message | filterA | filterB }}
+    </div>
+<script src="./vue.js"></script>
+<script>
+    var myMixin = {
+        created: function(){
+            this.hello()
+        },
+        methods: {
+            hello: function(){
+                console.log('hello from mixin')
+            }
+        }  
+    }
+    // 定义一个使用混入对象的组件
+    var Component = Vue.extend({
+        mixins: [myMixin]
+    })
+
+    var component = new Component() // => "hello from mixin"
+
+    
+
+
+    new Vue({
+        el: "#app",
+        filters: {
+            capitalize: function(value){
+                if( !value ) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            },
+            filterA: function(value){
+                return value + '年'
+            },
+            filterB: function(value){
+                return value + 'Hello World'
+            }
+        },
+        data: {
+            show: true,
+            message: "vue"
+        }
+    })
+</script>
+</body>
+</html>

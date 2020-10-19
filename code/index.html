@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+      }
+      .tab-button:hover {
+        background: #e0e0e0;
+      }
+      .tab-button.active {
+        background: #e0e0e0;
+      }
+      .tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+</style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="addCount">you clicked me {{count}} times</button>
+        <button v-on:click="addCount">you clicked me {{count}} times</button>
+        <button v-on:click="addCount">you clicked me {{count}} times</button>
+        <br><hr>
+        <blog-button></blog-button>
+        <blog-button></blog-button>
+        <blog-button></blog-button>
+        <br><hr>
+        <button
+            v-for="tab in tabs"
+            v-bind:key="tab"
+            v-bind:class="['tab-button', { active: currentTab === tab }]"
+            v-on:click="currentTab = tab"
+        >
+        {{ tab }}
+        </button>
+        <keep-alive>
+            <component v-bind:is="currentTabComponent" class="tab"></component>
+        </keep-alive>
+        <hr>
+        <div id="gg"></div>
+        <header id="header"></header>
+    </div>
+<script src="./vue.js"></script>
+<script>
+    if( NaN ){
+        console.log("true")
+    }else{
+        console.log("false")
+    }
+
+
+
+    Vue.component('blog-button', {
+        data() {
+            return {
+                count: 0
+            }
+        },
+        methods: {
+            add() {
+                this.count++
+            }
+        },
+        template: `<button v-on:click = "add()"> you clicked me {{ count }} times </button>`
+    })
+    Vue.component("tab-home", {
+        template: "<div>Home component</div>"
+    });
+    Vue.component("tab-posts", {
+        template: "<div>Posts component</div>"
+    });
+    Vue.component("tab-archive", {
+        template: "<div>Archive component</div>"
+    });
+
+
+    
+    
+
+    new Vue({
+        el: '#app',
+        data: {
+            count: 0,
+            currentTab: "Home",
+            tabs: ["Home", "Posts", "Archive"]
+        },
+        computed: {
+            currentTabComponent: function() {
+                return "tab-" + this.currentTab.toLowerCase();
+            }
+        },
+        methods: {
+            addCount(){
+                this.count++
+            },
+        }
+      
+    })
+</script>
+</body>
+</html>

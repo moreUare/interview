@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <blog-post v-bind="prop" ></blog-post>
+        <base-checkbox v-model="lovingVue"></base-checkbox>
+        <base-input v-bind:label = "label" v-bind:value = "name"  v-on:focus = "shake()"></base-input> 
+        <hr>
+        <navigation-link url="/profile">
+            Your Profile
+        </navigation-link>
+        <hr>
+        <base-layout>
+            <template v-slot:header>
+                <h1>Here might be a page title</h1>
+            </template>
+            
+            <p>A paragraph for the main content.</p>
+            <p>And another one.</p>
+            
+            <template v-slot:footer>
+                <p>Here's some contact info</p>
+            </template>
+        </base-layout>
+        <hr>
+        <current-user v-bind:user = "users">
+            <template v-slot:default = "scope">
+                {{ scope.user.firstName }}
+            </template>
+        </current-user>    
+        <hr>
+        <async-example></async-example>
+    </div>
+<script src="./vue.js"></script>
+<script>
+    var blogPost = {
+        props: ['title', 'author'],
+        template: `
+            <h3> {{ author.name }} </h3>
+        `
+    }
+
+    var baseCheckbox = {
+        model: {
+            prop: 'checked',
+            event:'change'
+        },
+        props: {
+            checked: Boolean
+        },
+        template: `
+            <input
+                type = "checkbox"
+                v-bind:checked = "checked"
+                v-on:change = "$emit('change', $event.target.checked)"
+            >
+        `
+    }
+
+    var baseInput = {
+        inheritAttrs: false,
+        props: ['label', 'value'],
+        computed: {
+            inputListeners: function(){
+                var vm = this;
+                return Object.assign({}, this.$listeners, {
+                    input: function(event){
+                        vm.$emit('input', event.target.value)
+                    }
+                })
+            }
+        },
+        template: `
+            <label>
+                {{label}}
+                <input
+                    v-bind="$attrs"
+                    v-bind:value="value"
+                    v-on="inputListeners"
+                />
+            </label>
+        `
+    }
+
+    var NavigationLink = {
+        props: [ 'url' ],
+        template: `
+            <a
+                v-bind:href = "url"
+                class="nav-link"
+            >
+                <slot></slot>
+            </a>
+        `
+    }
+
+    var baseLayout = {
+        template: `
+            <div class="container">
+                <header>
+                    <slot name="header"></slot>
+                </header>
+                <main>
+                    <slot></slot>
+                </main>
+                <footer>
+                    <slot name="footer"></slot>
+                </footer>
+            </div>
+        `
+    }
+
+    var currentUser = {
+        props: ['user'],
+        template: `
+            <span>
+                <slot v-bind:user = 'user'> {{ user.lastName }} </slot>
+            </span>
+
+        `
+    }
+    Vue.component('async-example', function(resolve, reject){
+        setTimeout(function(){
+            resolve({
+                template: `<div>I am async!</div>`
+            })
+        }, 1000)
+    })
+ 
+
+
+
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                prop: {
+                    title: "string",
+                    author: {
+                        name: 'veronica'
+                    }
+                },
+                lovingVue: true,
+                label: "姓名",
+                name: "gezhiwen",
+                users: {
+                    firstName: "ge",
+                    lastName: "zhiwen"
+                }
+            }
+        },
+        components: {
+            blogPost,
+            baseCheckbox,
+            baseInput,
+            NavigationLink,
+            baseLayout,
+            currentUser,
+        },
+        methods: {
+            shake: function(){
+                this.name = ""
+            }
+        }
+    })
+</script>
+</body>
+</html>
