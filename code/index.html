@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="FileSaver.js"></script>
+    <script>
+        function downloadTextFile (mobileCode) {
+        //mobileCode 为写入文件的内容，可以通过获取文本框的value写入
+            var file = new File([mobileCode], "test.text", { type: "text/plain;charset=utf-8" });
+            saveAs(file);
+        }
+    </script>
 <style>
     .tab-button {
         padding: 6px 10px;
@@ -28,7 +36,9 @@
 </style>
 </head>
 <body>
+    <button onclick='downloadTextFile(123)'>创建一个文本文件</button>
     <div id="app">
+        {{ getCount}}
         <button v-on:click="addCount">you clicked me {{count}} times</button>
         <button v-on:click="addCount">you clicked me {{count}} times</button>
         <button v-on:click="addCount">you clicked me {{count}} times</button>
@@ -54,13 +64,6 @@
     </div>
 <script src="./vue.js"></script>
 <script>
-    if( NaN ){
-        console.log("true")
-    }else{
-        console.log("false")
-    }
-
-
 
     Vue.component('blog-button', {
         data() {
@@ -99,6 +102,9 @@
         computed: {
             currentTabComponent: function() {
                 return "tab-" + this.currentTab.toLowerCase();
+            },
+            getCount: function(){
+                return this.count;
             }
         },
         methods: {

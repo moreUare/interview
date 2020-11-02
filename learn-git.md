@@ -65,7 +65,6 @@ git diff 查看修改内容
 	git restore --staged <file>  //（使用 "git restore --staged <文件>..." 以取消暂存）
 
   	(use **"git restore --staged <file>..."** to unstage)
-
 ```
   	git restore <file> 
   	git restore --staged <file>

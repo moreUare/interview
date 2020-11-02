@@ -23,9 +23,19 @@
 * indexOf() //返回数组中的第一个与指定值相等的元素索引，如果找不到这样的元素的索引，则返回-1.
 * lastIndexOf() //返回数组中最后一个（从右边数第一个）与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1
 ## Array.prototype.toString()
-**返回一个由所有数组组合而成的字符串，遮蔽了原型链上的Object.prototype.toString()**
+**返回一个由所有数组组合而成的字符串，遮蔽了原型链上的`Object.prototype.toString()`**
 ## Array.prototype.toLocaleString()
-**返回一个由所有数组元素组合而成的本地化后的字符串，遮蔽原型链上的Object.prototype.toLocaleString**
+**返回一个由所有数组元素组合而成的本地化后的字符串，遮蔽原型链上的`Object.prototype.toLocaleString()`**
+## Array.isArray() 
+**用来判断某个变量是否是一个数组对象**
+## Array.from()
+**从类数组对象或者可迭代对象中创建一个新的数组实例**    
+**Array.from(arrayLike[, mapFn[, thisArg]])**
+`arrayLike` 想要转换成数组的伪数组对象或迭代对象。  
+`mapFn`     如果指定了该参数，新数组中的每个元素会执行该回掉函数。  
+`thisArg`   可选参数，执行回掉函数`mapFn`时`this`对象。
+## Array.of()
+
 ## 数组迭代方法
 * forEach(callback) callback(item, index, arr)
 * every()   //如果数组中的每个元素都满足测试函数，则返回 true，否则返回 false
@@ -39,6 +49,7 @@
 # String
 ## 将字符串转为数组的方法
 * String.prototype.split(<parameter>) 返回 用parameter将字符串分隔成一个数组
+* [...string]
 ## String API(跟HTML无关的方法)
 * charAt()      //返回特定位置的字符
 * charCodeAt()  //返回表示给定索引的字符的Unicode的值
@@ -59,6 +70,41 @@
 * toUpperCase() //将字符串转换成大写并返回
 * trim()        //去除字符串的开始和结尾的空格
 
+## 数组方法重写
+**myForEach**
+```
+Array.prototype.myForEach = function(callback, thisArg){
+	for(let i = 0; i < this.length; i++){
+		callback.call(thisArg, this[i], i, this)
+	}
+}
+
+```
+**myReduce**
+```
+Array.prototype.myReduce = function(callback, initialValue){
+	if( this.length == 0 && initialValue == undefined){
+		throw("empty array with no initial value");
+	}else if( this.length > 0 && initialValue == undefined){
+		var accumulator = this[0];
+		for(let i = 1; i < this.length; i++){
+			accumulator = callback(accumulator, this[i], i, this)
+		}
+		return accumulator;
+	}else if( this.length == 0 && initialValue ){
+		return initialValue;
+	}else if( this.length > 0 && initialValue ){
+		var accumulator = initialValue;
+		for(let i = 0; i < this.length; i++){
+			accumulator = callback(accumulator, this[i], i, this)
+		}
+		return accumulator;
+	}
+}
+```
+
+
+
 # if
 * if(0) => false
 * if(-1) => true
@@ -66,6 +112,7 @@
 * if(NUll) => false
 * if(undefined) => false
 * if(NAN) => false
+* 判断一个值是否存在 if(value != undefined)
 
 
 
