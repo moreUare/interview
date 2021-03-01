@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <input type="text" value="123" readonly>
+
+    <script src="./requireJs/babel.min.js"></script>
+    <script type="text/babel" data-type="module">
+    import pro from './promise.js'
+    
+    // pro.p1().then(function(res){
+    //     console.log(res)
+    // })
+
+    pro.p2().then(function(res){
+        console.log(res)
+    }, function(err){
+        console.log(err)
+    })
+    
+    // Promise.all([pro.p1(), pro.p2(), pro.p3()]).then(function(res) {
+    //     console.log(res)
+    // })
+
+    // Promise.race([pro.p1(), pro.p2(), pro.p3()]).then(function(res) {
+    //     console.log(res)
+    // })
+       
+    
+
+    </script>
+    
+
+</body>
+
+</html>

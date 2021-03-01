@@ -169,7 +169,7 @@ var fs = require('fs');
 // 	}else{
 // 		throw("empty array with no initial value")
 // 	}
-	
+
 // }
 // var arr = [2, 3, 4]
 // let callback = function(accumulator, currentValue, currentIndex, srcArr){
@@ -363,12 +363,76 @@ var fs = require('fs');
 // }
 // getAge("ge", undefined)
 
-let [a, [b, c], d] = [1, [2, 3], 4]
-console.log(a)
-console.log(b)
-console.log(c)
-console.log(d)
+// let [a, [b, c], d] = [1, [2, 3], 4]
+// console.log(a)
+// console.log(b)
+// console.log(c)
+// console.log(d)
 
+// function log(x, y){
+// 	y = y || 'world';
+// 	console.log(x, y);
+// }
+// log('Hello')
+// log('Hello', 'China')
+// log('Hello', '')
 
+// --------------------------------------
+// function add (...values) {
+// 	let sum = 0;
 
+// 	console.log(values)
+	
+// 	for(var val of values) {
+// 		sum += val;
+// 	}
+	
+// 	return sum;
+// }
+
+// add(2, 5, 3)
+//----------------------------------------
+// console.log(...[1, 2, 3]);
+// let val = Math.max(...[14, 3, 77])
+// console.info(val)
+
+// var arr1 = [0, 1, 2];
+// var arr2 = [3, 4, 5];
+// // let arr = arr1.concat(arr2);
+// // console.log(arr + ":" +arr1)
+// let arr = arr1.push(...arr2)
+// console.log(arr1)
+
+// var a = "a";
+// console.log(a);
+
+// var a1 = [1, 2];
+// var a2 = [...a1];
+
+// a2[0] = 2;
+// console.log(a1)
+
+// var a = [...[ 'g', 'z', 'w' ]]
+// console.log(a)
+
+// Symbol
+// const obj = {
+//     toString() {
+//         return 'abc';
+//     }
+// }
+// const sym = Symbol(obj)
+// console.log(sym) 
+
+// console.log({...["ge", "zhi", "wen"]})
+class Point {
+    constructor(x, y){
+        this.x = x;
+        this.y = y
+    }
+    toString () {
+        return "(" + this.x + "," + this.y + ")";
+    }
+}
+console.log(Point)
 

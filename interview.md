@@ -29,8 +29,8 @@ source 源对象 （多个）
 
 ### 属性访问器
 **属性访问器提供了两种方式用于访问一个对象的属性，它们分别是点号和方括号**
->object.property
->object['property']
+>object.property 	   
+>object['property'] 	   
 ```
 const person1 = {};
 person1['firstname'] = 'Mario';
@@ -48,6 +48,7 @@ console.log(person2['lastname']);
 // expected output: "Doe"
 ```
 ### async function
+```
 var app = async function(){
 	await f1();
 	await f2();
@@ -56,6 +57,7 @@ f1(){}
 f2(){}
 app()
 ???
+```
 
 ### cookie 和 session
 >我们今天登录了一个京东的账号。过几天重新打开京东这个页面，发现账号还在登录的状态上。这个就是存在客户端。使用cookie.
