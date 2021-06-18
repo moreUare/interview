@@ -52,6 +52,7 @@
 // --------------------------------------------------------------
 // Js创建、写入、读取本地文件
 var fs = require('fs');
+const { prototype } = require('module');
 // 异步追加文件内容
 // var record = function(file = "input.txt", content = ""){
 //     fs.appendFile(file, content, function(err){
@@ -382,11 +383,11 @@ var fs = require('fs');
 // 	let sum = 0;
 
 // 	console.log(values)
-	
+
 // 	for(var val of values) {
 // 		sum += val;
 // 	}
-	
+
 // 	return sum;
 // }
 
@@ -425,14 +426,92 @@ var fs = require('fs');
 // console.log(sym) 
 
 // console.log({...["ge", "zhi", "wen"]})
+// class Point {
+//     constructor(x, y){
+//         this.x = x;
+//         this.y = y
+//     }
+//     toString () {
+//         return "(" + this.x + "," + this.y + ")";
+//     }
+// }
+// console.log(Point)
+
+// function People(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+// People.prototype = {
+//     eat: function () {
+//         console.log(this.name + " is eating");
+//         return this;
+//     },
+//     speak: function () {
+//         console.log(this.name + ' is speaking')
+//         return this;
+//     },
+//     subAge: function () {
+//         --this.age
+//         return this;
+//     },
+//     addAge: function () {
+//         ++this.age
+//         return this;
+//     }
+// }
+
+// const p1 = new People("xiaoming", 12)
+// console.log(p1.subAge().addAge().addAge().addAge().subAge())
+
+// var n = 10
+// function fn() {
+//     var n = 20
+//     function f() {
+//         n++;
+//         console.log(n)
+//     }
+//     f()
+//     return f
+// }
+// var x = fn()
+// x()
+// x()
+// console.log(n)
+
+// class Rectangle {
+//     constructor(width, height) {
+//         this.height = height;
+//         this.width = width
+//     }
+
+//     get area() {
+//         return this.calcArea()
+//     }
+
+//     calcArea() {
+//         return this.height * this.width;
+//     }
+// }
+
+// const square = new Rectangle(10, 10);
+// console.log(square.calcArea())
+
 class Point {
-    constructor(x, y){
+    constructor(x, y) {
         this.x = x;
-        this.y = y
+        this.y = y;
     }
-    toString () {
-        return "(" + this.x + "," + this.y + ")";
+
+    static distance(a, b) {
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+
+        return Math.hypot(dx, dy)
     }
 }
-console.log(Point)
 
+const p1 = new Point(5, 5);
+const p2 = new Point(5, 10);
+
+let d = Point.distance(p1, p2);
+console.log(d)

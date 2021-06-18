@@ -22,4 +22,4 @@ promise.then(function(res){
     console.log(err)
 })
 ```
-* 调用`resolve`或`reject`并不会终结Promise的参数函数的执行 *
+* 调用`resolve`或`reject`并不会终结Promise的参数函数的执行 

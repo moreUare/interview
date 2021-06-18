@@ -46,7 +46,7 @@
 // // module3().m1()
 
 // var module1 = (function (mod){
-    
+
 // })
 // module.exports = function(){
 //     let _count = 0
@@ -70,26 +70,26 @@
 //         this._count++
 //     },
 //     sub: function(){
-        
+
 //         _count--
 //     },
 //     print: function(){
-        
+
 //         console.log(this)
 //         console.log(this._count)
 //     }
 // }
-    
+
 // 导出构造函数
 
-export default function Animal(name, age){
-    if(this instanceof Animal){
+export default function Animal(name, age) {
+    if (this instanceof Animal) {
         this.name = name;
         this.age = age;
-        this.takeAnimal = function(){
+        this.takeAnimal = function () {
             console.log("I am animal")
         }
-    }else{
+    } else {
         return new Animal(name, age)
     }
 }

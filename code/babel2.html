@@ -11,11 +11,9 @@
     <div id="output"></div>
     <input type="text" value="123" readonly>
 
-    <script src="./requireJs/babel.min.js"></script>
+    <!-- <script src="./requireJs/babel.min.js"></script> -->
     <script type="module">
-        import Animal from './module.js' 
-		import Cat from './module2.js' 
-		import './requireJs/jquery.js' console.log(Animal) console.log($.fn.jquery) // $('#output').html("hello world") // md.add() // md.add() // md.add() // console.log(m d.add()) // md.print()
+        import Animal from './module.js' import Cat from './module2.js' import './requireJs/jquery.js' console.log(Animal) console.log($.fn.jquery) // $('#output').html("hello world") // md.add() // md.add() // md.add() // console.log(m d.add()) // md.print()
         var cat = new Cat('cat', 1) var animal = new Animal("cat", 1) animal.takeAnimal() console.log(cat) console.log(cat.sound()) console.log(cat.eatFood()) cat.catMiao() console.log(cat.__proto__); // for (let prop in cat) { // console.log(`${[prop]}
         ： ${cat[ prop]}`) // } // class Point { // constructor(x, y){ // this.x = x; // this.y = y // } // toString () { // return "(" + this.x + "," + this.y + ")"; // } // } // console.log(typeof Point)
 
@@ -25,5 +23,3 @@
     <!-- <script src="js/require.js" data-main='js/module'></script> -->
 
 </body>
-
-</html>

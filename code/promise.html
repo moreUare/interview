@@ -13,30 +13,35 @@
 
     <script src="./requireJs/babel.min.js"></script>
     <script type="text/babel" data-type="module">
-    import pro from './promise.js'
-    
-    // pro.p1().then(function(res){
-    //     console.log(res)
-    // })
+        import pro from './promise.js'
 
-    pro.p2().then(function(res){
-        console.log(res)
-    }, function(err){
-        console.log(err)
-    })
-    
-    // Promise.all([pro.p1(), pro.p2(), pro.p3()]).then(function(res) {
-    //     console.log(res)
-    // })
 
-    // Promise.race([pro.p1(), pro.p2(), pro.p3()]).then(function(res) {
-    //     console.log(res)
-    // })
-       
-    
+
+        // pro.p1().then(function(res){
+        //     console.log(res)
+        // })
+
+        // pro.p2().then(function(res){
+        //     console.log(res)
+        // }, function(err){
+        //     console.log(err)
+        // })
+
+        // Promise.all([pro.p1(), pro.p2(), pro.p3()]).then(function(res) {
+        //     console.log(res)
+        // })
+
+        // let time = 0;
+        // setInterval(function () {
+        //     console.log(++time)
+        // }, 1000)
+        Promise.race([pro.p1(), pro.p2(), pro.p3()]).then(function (res) {
+            console.log(res)
+        })
+
 
     </script>
-    
+
 
 </body>
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>switch开关按钮</title>
+    <style type="text/css">
+        #checked {
+            width: 60px;
+            position: relative;
+            margin: 20px auto;
+        }
+        
+        .labelBox {
+            margin-bottom: 20px;
+            background: #409eff;
+            border-radius: 40px;
+            width: 60px;
+            position: relative;
+            height: 32px;
+        }
+        
+        .check {
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        
+        input[type=checkbox] {
+            border: 0 none !important;
+            clip: rect(1px, 1px, 1px, 1px);
+            height: 1px !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            width: 1px !important;
+        }
+        
+        @keyframes labelON {
+            0% {
+                top: 0px;
+                left: 0px;
+            }
+            100% {
+                top: 0px;
+                left: 28px;
+            }
+        }
+        
+        @keyframes labelOFF {
+            0% {
+                top: 0px;
+                left: 28px;
+            }
+            100% {
+                top: 0px;
+                left: 0px;
+            }
+        }
+        
+        input[type=checkbox]:checked+label.check {
+            top: 0px;
+            left: 28px;
+            -webkit-animation: labelON 0.2s ease-in 0s 1;
+            -moz-animation: labelON 0.2s ease-in 0s 1;
+            -o-animation: labelON 0.2s ease-in 0s 1;
+            -ms-animation: labelON 0.2s ease-in 0s 1;
+            animation: labelON 0.2s ease-in 0s 1;
+            box-shadow: #244766 -1px 0px 3px;
+        }
+        
+        input[type=checkbox]+label.check {
+            top: 0px;
+            left: 0px;
+            -webkit-animation: labelOFF 0.2s ease-in 0s 1;
+            -moz-animation: labelOFF 0.2s ease-in 0s 1;
+            -o-animation: labelOFF 0.2s ease-in 0s 1;
+            -ms-animation: labelOFF 0.2s ease-in 0s 1;
+            animation: labelOFF 0.2s ease-in 0s 1;
+            box-shadow: #244766 1px 0px 3px;
+        }
+        
+        .status {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="status">1</p>
+    <div id="checked">
+        <div class="labelBox">
+            <input type="checkbox" value="wi-fi" id="wifi" name="wifi" checked="checked" />
+            <label for="wifi" class="check"></label>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var onOff = true;
+    document.querySelector('.status').innerHTML = onOff;
+    document.querySelector(".check").onclick = function(argument) {
+        // body...
+        onOff = !onOff;
+        document.querySelector('.status').innerHTML = onOff
+    }
+</script>
+
+</html>

@@ -7,24 +7,23 @@
 // console.log(num._count)
 
 import Animal from './module.js'
-export default function Cat(name, age){
-    if(this instanceof Cat){
+export default function Cat(name, age) {
+    if (this instanceof Cat) {
         this.name = name;
         this.age = age;
-    }else{
+    } else {
         return new Cat(name, age)
     }
 }
 
 Cat.prototype = {
     ...Animal.prototype,
-    sound : function(){
+    sound: function() {
         return (`cat is crying`)
     },
-    catMiao : function() {
+    catMiao: function() {
         console.log("miao miao miao")
     }
 }
 
 Cat.prototype.constructor = Cat;
-

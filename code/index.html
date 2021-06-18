@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="FileSaver.js"></script>
     <script>
-        function downloadTextFile (mobileCode) {
-        //mobileCode 为写入文件的内容，可以通过获取文本框的value写入
-            var file = new File([mobileCode], "test.text", { type: "text/plain;charset=utf-8" });
+        function downloadTextFile(mobileCode) {
+            //mobileCode 为写入文件的内容，可以通过获取文本框的value写入
+            var file = new File([mobileCode], "test.text", {
+                type: "text/plain;charset=utf-8"
+            });
             saveAs(file);
         }
     </script>
-<style>
-    .tab-button {
-        padding: 6px 10px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        background: #f0f0f0;
-        margin-bottom: -1px;
-        margin-right: -1px;
-      }
-      .tab-button:hover {
-        background: #e0e0e0;
-      }
-      .tab-button.active {
-        background: #e0e0e0;
-      }
-      .tab {
-        border: 1px solid #ccc;
-        padding: 10px;
-      }
-</style>
+    <style>
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+        
+        .tab-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .tab-button.active {
+            background: #e0e0e0;
+        }
+        
+        .tab {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <button onclick='downloadTextFile(123)'>创建一个文本文件</button>
     <div id="app">
@@ -42,17 +49,14 @@
         <button v-on:click="addCount">you clicked me {{count}} times</button>
         <button v-on:click="addCount">you clicked me {{count}} times</button>
         <button v-on:click="addCount">you clicked me {{count}} times</button>
-        <br><hr>
+        <br>
+        <hr>
         <blog-button></blog-button>
         <blog-button></blog-button>
         <blog-button></blog-button>
-        <br><hr>
-        <button
-            v-for="tab in tabs"
-            v-bind:key="tab"
-            v-bind:class="['tab-button', { active: currentTab === tab }]"
-            v-on:click="currentTab = tab"
-        >
+        <br>
+        <hr>
+        <button v-for="tab in tabs" v-bind:key="tab" v-bind:class="['tab-button', { active: currentTab === tab }]" v-on:click="currentTab = tab">
         {{ tab }}
         </button>
         <keep-alive>
@@ -62,58 +66,58 @@
         <div id="gg"></div>
         <header id="header"></header>
     </div>
-<script src="./vue.js"></script>
-<script>
-
-    Vue.component('blog-button', {
-        data() {
-            return {
-                count: 0
-            }
-        },
-        methods: {
-            add() {
-                this.count++
-            }
-        },
-        template: `<button v-on:click = "add()"> you clicked me {{ count }} times </button>`
-    })
-    Vue.component("tab-home", {
-        template: "<div>Home component</div>"
-    });
-    Vue.component("tab-posts", {
-        template: "<div>Posts component</div>"
-    });
-    Vue.component("tab-archive", {
-        template: "<div>Archive component</div>"
-    });
-
-
-    
-    
-
-    new Vue({
-        el: '#app',
-        data: {
-            count: 0,
-            currentTab: "Home",
-            tabs: ["Home", "Posts", "Archive"]
-        },
-        computed: {
-            currentTabComponent: function() {
-                return "tab-" + this.currentTab.toLowerCase();
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('blog-button', {
+            data() {
+                return {
+                    count: 0
+                }
             },
-            getCount: function(){
-                return this.count;
-            }
-        },
-        methods: {
-            addCount(){
-                this.count++
+            methods: {
+                add() {
+                    this.count++
+                }
             },
-        }
-      
-    })
-</script>
+            template: `<button v-on:click = "add()"> you clicked me {{ count }} times </button>`
+        })
+        Vue.component("tab-home", {
+            template: "<div>Home component</div>"
+        });
+        Vue.component("tab-posts", {
+            template: "<div>Posts component</div>"
+        });
+        Vue.component("tab-archive", {
+            template: "<div>Archive component</div>"
+        });
+
+
+
+
+
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                currentTab: "Home",
+                tabs: ["Home", "Posts", "Archive"]
+            },
+            computed: {
+                currentTabComponent: function() {
+                    return "tab-" + this.currentTab.toLowerCase();
+                },
+                getCount: function() {
+                    return this.count;
+                }
+            },
+            methods: {
+                addCount() {
+                    this.count++
+                },
+            }
+
+        })
+    </script>
 </body>
+
 </html>
