@@ -75,7 +75,12 @@ git diff 查看修改内容
 ```git remote add origin git@github.com:moreUare/learngit.git```   
 ***http***  
 ```git remote add origin https://github.com/moreUare/learngit.git```   
-关联后，使用命令git push -u origin master  
+关联后，使用命令`git push -u origin master`
+***由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。***
+```git push <远程主机名> <本地分支名>:<远程分支名>```
+如果本地分支名与远程分支名相同，则可以省略冒号
+```git push <远程主机名> <本地分支名>```
+ 
 
 ## 克隆远程库
 ```git clone git@github.com:moreUare/learngit.git```
@@ -161,6 +166,19 @@ tag可以代替commitID
 标签按字母排序
 
 ***如果两人同时向远程仓库push产生冲突，可能也许网速慢的会被reject***
+## git 每天更新
+1. 查看远程仓库 `git remote -v`
+2. 从远程获取最新版本到本地
+ `git fetch origin master:temp`
+3. 比较本地的仓库与远程仓库的区别
+ `git diff temp`
+4. 合并temp分支到master分支
+ `git merge temp`
+* 若有冲突则需手动解决冲突的文件（git status 可以告诉我们冲突的文件），然后提交
+* git add .
+* git commit -m 'conflict fixed'
+5. 可删除分支 git branch -d temp
+6. git pull origin master 相当于git fetch 和 git merge
 
 
 
